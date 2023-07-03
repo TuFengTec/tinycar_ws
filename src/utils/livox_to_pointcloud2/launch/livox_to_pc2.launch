@@ -1,0 +1,8 @@
+<launch>
+
+
+  <node pkg="livox_to_pointcloud2" type="livox_to_pointcloud2_node" respawn="false" name="livox_to_pc2" output="screen">
+    
+  </node>
+
+</launch>

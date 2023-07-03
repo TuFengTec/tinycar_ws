@@ -1,0 +1,7 @@
+<launch>
+
+
+   <!--- ========================== convert===================================== -->
+  <include file="$(find pointcloud_to_laserscan)/launch/rslidar_scan.launch" />
+
+</launch>

@@ -1,0 +1,24 @@
+<launch>
+
+  <node name="pavo2_node"    pkg="pavo2_ros"  type="pavo2_scan_node"  respawn="false"  output="screen">
+    <remap from="/pavo2_node/scan" to="/scan" />
+    <param name="frame_id"     type="string"   value="laser_frame"/><!--配置frame_id-->
+    <param name="scan_topic"   type="string"   value="scan" /><!--设置激光雷达的topic名称--> 
+    <param name="angle_min"    type="double"   value="-180.00" /><!--设置最小角度，单位度.取值范围[-140,140].default=-140.0-->
+    <param name="angle_max"    type="double"   value="180.00"/><!--设置最大角度，单位度.取值范围[-140,140].default=140.0-->
+    <param name="range_min"    type="double"   value="0.10" /><!--设置最小距离，单位米，default=0.10-->
+    <param name="range_max"    type="double"   value="50.0" /><!--设置最大距离，单位米，default=20-->
+    <param name="angle_resolution"  type="int"      value="32"/>
+    <param name="motor_speed"  type="int"      value="10" /><!--default=50Hz-->
+    <param name="angle_start"  type="int"      value="0" /><!--设置起始角度，default=4000，即40度-->
+    <param name="angle_end"  type="int"      value="36000" /><!--设置结束角度，default=32000，即320度-->
+    <param name="intensity"     type="bool"     value="true"/><!--强度使能，使能强度true，不使能强度false，default=true -->
+    <param name="inverted"     type="bool"     value="false"/><!--配置雷达是否倒装，倒装true，正装false-->
+    <param name="lidar_ip"     type="string"   value="10.10.10.121" /><!--所要连接的雷达IP地址，即通过PavoView设置的雷达IP地址-->
+    <param name="lidar_port"   type="int"      value="2368" /><!--雷达ip默认为10.10.10.121，端口号默认为2368-->
+    <param name="echo_mode"     type="bool"     value="true"/><!--二回波使能，使能二回波true，不使能二回波false，default=true -->
+    
+  </node>
+
+  
+</launch>

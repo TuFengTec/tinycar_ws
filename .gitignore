@@ -1,0 +1,11 @@
+.catkin_workspace
+/build
+/devel
+/bag
+/rosbags
+.vscode/
+/src/CMakeLists.txt
+*.bag
+*.doc
+
+

@@ -1,0 +1,13 @@
+<launch>
+
+  <!--- Run lidar odom -->
+  <include file="$(find rf2o_laser_odometry)/launch/rf2o_laser_odometry.launch" />
+
+  <!--- Run localization-->
+  <include file="$(find neo_localization)/launch/neo_test.launch" /> 
+
+
+  <!--- Run teb navagation-->
+  <!-- <include file="$(find tinycar_start)/launch/minicar_navigation.launch" />  -->
+
+</launch>

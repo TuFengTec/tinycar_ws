@@ -1,0 +1,36 @@
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find tinycar_start)/include/config/tinycar.urdf.xacro --inorder" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true"></node>
+
+
+   <!--- ========================== chassis and cmd===================================== -->
+  <!--- Run chassis driver-->
+  <include file="$(find crss_chassis_driver)/launch/can_node_nx.launch" />
+  
+  <!--- Run chassis driver-->
+  <include file="$(find tinycar_start)/launch/tools/tinycar_cmdboost.launch" />
+
+  <!--- ========================== lidar=============================================== -->
+  <!--- Run lidar ===>pavo2-->
+  <!-- <include file="$(find pavo2_ros)/launch/run_pavo2.launch" /> -->
+
+
+  <!--- Run lidar ===>mid360 -->
+  <include file="$(find livox_ros_driver2)/launch_ROS1/msg_MID360.launch" />
+  <include file="$(find tinycar_start)/launch/tools/livox_to_scan.launch" />
+
+
+  <!--- Run lidar ===>RS-Helios-16P -->
+  <!-- <include file="$(find rslidar_sdk)/launch/start_16p.launch" /> -->
+  <!-- <include file="$(find tinycar_start)/launch/tools/rslidar_to_scan.launch" /> -->
+
+  <!--- ========================== imu =============================================== -->
+  <!--- Run imu -->
+  <include file="$(find ins_driver)/launch/ins.launch" />
+
+  <!--- ========================== camera ============================================ -->
+  <!--- Run camera -->
+  <include file="$(find camera_driver)/launch/run_camera.launch" />
+
+</launch>

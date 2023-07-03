@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package>
+  <name>minicar_tools</name>
+  <version>0.10.2</version>
+  <description>
+    turtlesim is a tool made for teaching ROS and ROS packages.
+  </description>
+  <maintainer email="mabel@openrobotics.org">Mabel Zhang</maintainer>
+  <maintainer email="sloretz@openrobotics.org">Shane Loretz</maintainer>
+  <license>BSD</license>
+
+  
+  <author>Josh Faust</author>
+  <author email="dthomas@osrfoundation.org">Dirk Thomas</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>roscpp_serialization</build_depend>
+  <build_depend>roslib</build_depend>
+  <build_depend>rostime</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>std_srvs</build_depend>
+  
+
+  <run_depend>geometry_msgs</run_depend>
+ <run_depend>rosconsole</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>roscpp_serialization</run_depend>
+  <run_depend>roslib</run_depend>
+  <run_depend>rostime</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>std_srvs</run_depend>
+ 
+</package>

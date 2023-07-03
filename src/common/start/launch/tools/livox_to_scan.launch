@@ -1,0 +1,9 @@
+<launch>
+
+
+   <!--- ========================== convert===================================== -->
+  <include file="$(find livox_to_pointcloud2)/launch/livox_to_pc2.launch" />
+  
+  <include file="$(find pointcloud_to_laserscan)/launch/mid360_scan.launch" />
+
+</launch>

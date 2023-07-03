@@ -1,0 +1,11 @@
+<launch>
+
+    <node name="ins_node_temp" pkg="ins_driver" type="INS_node" output="screen" respawn="false">
+    <param name="port_name" type="string" value="/dev/ttysWK2" />
+    <param name="baudrate" type="int" value="115200" />
+    </node>
+
+    <!-- <node name="test_node" pkg="ins_driver" type="test_node" output="screen" >
+    </node> -->
+
+</launch>

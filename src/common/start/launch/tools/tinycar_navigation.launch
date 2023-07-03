@@ -1,0 +1,22 @@
+
+<launch>
+
+ <!-- <arg name="map_file" default="$(find minicar_start)/map/room/office.yaml"/>
+ <node name="map_server_for_test" pkg="map_server" type="map_server" args="$(arg map_file)">
+ </node> -->
+
+  <!--- Robot State TF -->
+  <!-- <include file="$(find cartographer_ros)/launch/minicar_localization_realtime.launch" /> -->
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find tinycar_start)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find tinycar_start)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find tinycar_start)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find tinycar_start)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find tinycar_start)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find tinycar_start)/param/teb_local_planner_params.yaml" command="load" />
+    <!-- <remap from="/cmd_vel"  to="/chassis/ctrl_motion" /> -->
+  </node>
+
+
+</launch>

@@ -1,0 +1,75 @@
+###################################
+PAVO2 ROS package 1.0.0.3
+###################################
+使用方法：
+1.在系统中安装ros环境，具体安装方法参考下面连接：
+  安装链接：http://wiki.ros.org/kinetic/Installation/Ubuntu
+  搭建ros工程链接：http://wiki.ros.org/cn/ROS/Tutorials/InstallingandConfiguringROSEnvironment
+  
+2.将pavo2_ros复制到ros工作目录下的src目录
+
+3.编译工程
+  catkin_make
+  
+4.设置环境变量
+  source devel/setup.sh
+  
+5.配置上位机IP
+  与雷达连接的网卡IP：默认上位机IP配置为10.10.10.100
+  
+6.配置雷达参数
+  打开pavo2_ros_v1.0.3/launch/pavo2_scan.launch 进行参数配置
+  参数说明：
+  1.frame_id 雷达id，default=laser_frame
+  2.scan_topic 雷达的topic名称，default=scan
+  3.angle_min 最小角度，单位度，取值范围 [-140,140],default=-140,即-140度
+  4.angle_max 最大角度，单位度，取值范围 [-140,140],default=140，即140度
+  5.range_min 最小距离，单位米，default=0.10
+  6.range_max 最大距离，单位米，default=50.0
+  7.angle_start 雷达起始角度，default=4000，即40度
+  8.angle_end 雷达结束角度，default=32000，即320度
+  9.motor_speed 雷达转速，单位Hz，default=50Hz，不可配置
+  10.inverted 是否设置翻转，取值范围true，false . default=false
+  11.intensity 强度使能，取值范围true，false . default=true
+  12.angle_resolution 雷达角分辨率，单位0.01度，default=32，即0.32度
+  13.lidar_ip 所要连接的雷达IP地址，即通过PavoView设置的雷达IP地址，默认为10.10.10.121.
+  14.lidar_port 所要连接的雷达端口号，默认为2368.
+  15.echo_mode 二回波使能，使能二回波true，不使能二回波false，default=true 
+  
+7.启动PAVO2 ros节点
+  1)发布LaserScan消息
+    1.roslaunch pavo2_ros pavo2_scan.launch
+    2.roslaunch pavo2_ros pavo2_scan_view.launch (使用rviz显示）
+ 2)发布PointCloud消息
+    1.roslaunch pavo2_ros pavo2_pcd.launch
+    2.roslaunch pavo2_ros pavo2_pcd_view.launch (使用rviz显示）
+ 3)启动多个雷达节点
+    1.source devel/setup.bash
+    2.roslaunch pavo2_ros pavo2_scan_twin_view.launch
+8.建图
+  1)使用gmapping建图
+    1.安装gmapping
+     sudo apt-get install ros-kinetic-slam-gmapping（ubuntu16.04）
+     sudo apt-get install ros-indigo-slam-gmapping  (ubuntu14.04)
+    2.安装laser_scan_matcher，此包用于根据雷达数据的匹配来估计雷达的位置运动，发布geometry_msgs/Pose2D信息
+     sudo apt-get install ros-kinetic-scan-tools（ubuntu16.04）
+     sudo apt-get install ros-indigo-scan-tools（ubuntu14.04）
+    3.运行gmapping，在src目录下
+     source devel/setup.bash
+     roslaunch pavo2_ros pavo2_gmapping.launch
+
+  2)使用hector实时建图
+    1.安装hector
+     sudo apt-get install ros-kinetic-hector-slam（ubuntu16.04）
+     sudo apt-get install ros-indigo-hector-slam  (ubuntu14.04)
+    2.运行hector算法实时构建地图，在src目录下
+     source devel/setup.bash  
+     roslaunch pavo2_ros pavo2_hector.launch
+9.动态参数配置
+	1.终端1
+	启动雷达ros节点
+	roslaunch pavo2_ros pavo2_scan_view.launch
+	
+	2.终端2
+	rosrun rqt_reconfigure rqt_reconfigure
+	可以在界面中动态设置参数

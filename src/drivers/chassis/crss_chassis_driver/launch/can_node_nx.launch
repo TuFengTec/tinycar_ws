@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="can_node"       pkg="crss_chassis_driver"   type="can_node_nx"  output="screen">
+        <param name="vc"            value="1000.00"/>      <!--velocity factor-->
+        <param name="vel_max"       value="5.00"/>      <!--m/s(double)-->
+        <param name="ang_max"       value="0.61"/>      <!--radian(double)-->
+    </node>
+</launch>

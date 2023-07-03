@@ -1,0 +1,6 @@
+<launch>
+
+  <!--- Run teb navagation-->
+  <include file="$(find tinycar_start)/launch/tools/tinycar_navigation.launch" /> 
+
+</launch>

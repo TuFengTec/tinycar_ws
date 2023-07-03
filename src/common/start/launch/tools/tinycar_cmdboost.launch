@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="tinycar_start" type="cmdRateBoost" respawn="false" name="cmdboost" output="screen">
+    
+  </node>
+
+</launch>

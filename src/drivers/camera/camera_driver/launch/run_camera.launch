@@ -1,0 +1,7 @@
+<launch>
+    <!-- start  camera nodes -->
+    <node pkg="camera_driver" type="camera_node" ns="camera" name="camera_node" respawn="false" output="screen">
+    </node>
+  
+  </launch>
+  

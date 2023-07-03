@@ -1,0 +1,26 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+  <param name="robot_description" command="$(find xacro)/xacro $(find minicar_start)/include/config/robot.urdf.xacro --inorder" />
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true"></node> -->
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="base_to_chassis" args="0 0 0 0 0 0 base_link chassis_link 100" />
+ 	<node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0 0 0 0 0 0 chassis_link imu_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0.055 0 0.220 0 0 0 chassis_link laser_frame 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_navsat" args="0 0 0 0 0 0 chassis_link navsat_link 100" />
+  -->
+
+
+ <node pkg="minicar_start" type="robot_pose_publisher" name="robot_pose_publisher" output="screen"></node>
+
+
+
+  <arg name="map_file" default="$(find minicar_start)/map/room/office.yaml"/>
+ <node name="map_server_for_test" pkg="map_server" type="map_server" args="$(arg map_file)">
+ </node>
+
+  <!--- Run Rviz-->
+  <!-- <node pkg="rviz" type="rviz" name="minicar_rviz" args="-d $(find minicar_start)/rviz/minicar.rviz" /> -->
+
+</launch>
+
+
